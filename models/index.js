@@ -22,6 +22,7 @@ fs
       db[model.name] = model;
   });
 
+// 关联不同的 models
 Object.keys(db).forEach(function(modelName) {
     if ("associate" in db[modelName]) {
       db[modelName].associate(db);

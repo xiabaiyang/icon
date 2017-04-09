@@ -19,7 +19,8 @@ var router  = express.Router();
 
 router.post('/create', function(req, res) {
   models.User.create({
-    username: req.body.username
+    username: req.body.username,
+    password: req.body.password
   }).then(function() {
     res.redirect('/');
   });
@@ -53,6 +54,5 @@ router.get('/:user_id/icons/:task_id/destroy', function (req, res) {
     res.redirect('/');
   });
 });
-
 
 module.exports = router;

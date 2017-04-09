@@ -24,7 +24,7 @@ var server = http.createServer(app);
 
 /**
  * Listen on provided port, on all network interfaces.
- * automatic table creation that sequelize provides
+ * 自动生成数据库的表
  */
 
  models.sequelize.sync().then(function () {

@@ -22,22 +22,22 @@ var app = express();
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
 
-// app.set('trust proxy', 'loopback');
+app.set('trust proxy', 'loopback'); // 代理端口
 
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 app.use(logger('dev'));
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json({limit: '50mb'}));
+app.use(bodyParser.urlencoded({ limit: '50mb', extended: false }));
 app.use(cookieParser());
 
 app.use(express.static(path.join(__dirname, 'public')));
 
-// session 设置
+
+// session 设置 (secret需要自动生成)
 var sessionStore = new MySQLStore(options);
 app.use(session({
-    key: 'session_cookie_name',
-    secret: 'session_cookie_secret',
+    secret: '1792B4344F7D80C6189E',
     store: sessionStore,
     resave: true,
     saveUninitialized: true
